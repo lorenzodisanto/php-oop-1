@@ -15,7 +15,7 @@
 <body data-bs-theme="dark">
     <div class="container mt-3">
         <h1 class="text-center">Prodotti</h1>
-        <div class="row g-4 mt-5">
+        <div class="row g-4 mt-5 mb-5">
         <?php foreach($products as $product): ?>
             <div class="col-4">
                 <?php include __DIR__ . "./partials/card.php" ?>
