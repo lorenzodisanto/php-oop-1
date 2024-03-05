@@ -5,19 +5,19 @@ class Production {
     public $language;
     public $vote;
 
-    public $genre;
+    public $genres;
 
     // costruttore
     function __construct(
         string $title,
         string $language,
         int $vote,
-        Genre $genre,
+        array $genres,
     ){
         $this->set_title( $title );
         $this->language = $language;
         $this->vote = $vote;
-        $this->genre = $genre;
+        $this->genres = $genres;
     }
 
     // metodo settaggio titolo

@@ -1,19 +1,42 @@
 <div class="card" style="height: 100%">
-    <div class="card-body">
-        <h4 class="text-center"><?= $product->get_title() ?></h4>
-        <p><b>Lingua:</b> <?= $product->language ?></p>
-        <p><b>Voto:</b> <?= $product->vote ?></p>
-        <p><b>Genere:</b> <?= $product->genre->name ?></p>
-        
-        <!-- se abbiamo un Movie -->
-        <?php if($product instanceof Movie): ?>
-        <p><b>Incassi:</b> <?= $product->profits ?> €</p>
-        <p><b>Durata:</b> <?= $product->duration ?> min</p>
-        <!-- se abbaimo una TVSerie -->
-        <?php elseif($product instanceof TVSerie): ?>
-        <p><b>Numero stagioni:</b> <?= $product->seasons ?></p>
-        <?php endif ?>
+  
+  <!-- Titolo -->
+  <h3 class="card-header"><?= $product->get_title() ?></h3>
+  <div class="card-body">
+    <!-- descrizione -->
+    <p class="card-text">
+    <?php foreach( $product->genres as $genre ) : ?>
+        <?= $genre->description ?></p>
+        <?php endforeach; ?>
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+       <!-- lingua e voto -->
+    <li class="list-group-item"><b>Lingua:</b> <?= $product->language ?></li>
+    <li class="list-group-item"><b>Voto:</b> <?= $product->vote ?></li>
 
-        <p><b>Descrizione:</b></br> <?= $product->genre->description ?></p>
-    </div>
+     <!-- generi -->
+    <li class="list-group-item">
+      <b>Genere:</b>
+      <?php foreach( $product->genres as $genre ): ?>
+      <?= $genre->name ?>
+      <?php endforeach; ?>
+    </li>
+
+    <!-- se è un Movie -->
+    <?php if($product instanceof Movie): ?>
+    <li class="list-group-item">
+    <p><b>Incassi:</b> <?= $product->profits ?> €</p>
+    </li>
+    <li class="list-group-item">
+    <p><b>Durata:</b> <?= $product->duration ?> min</p>
+    </li>
+
+    <!-- se è una TVSerie -->
+    <?php elseif($product instanceof TVSerie): ?>
+    <li class="list-group-item">
+    <p><b>Numero stagioni: </b><?= $product->seasons ?></p>
+    </li>
+    <?php endif ?>   
+  </ul>
 </div> 

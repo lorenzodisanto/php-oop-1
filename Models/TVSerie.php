@@ -11,12 +11,12 @@ class TVSerie extends Production {
     string $title,
     string $language,
     int $vote,
-    Genre $genre,
+    array $genres,
     int $seasons, 
     ) {
 
         // invoco costruttore del genitore 
-        parent::__construct($title, $language, $vote, $genre);
+        parent::__construct($title, $language, $vote, $genres);
 
         $this->seasons = $seasons;
     }
