@@ -14,10 +14,22 @@ class Production {
         int $vote,
         Genre $genre,
     ){
-        $this->title = $title;
+        $this->set_title( $title );
         $this->language = $language;
         $this->vote = $vote;
         $this->genre = $genre;
+    }
+
+    // metodo settaggio titolo
+    public function set_title($title){
+        if(empty($title))
+        return $this->title = "Titolo non disponibile";
+    $this->title = $title;
+    }
+    
+    // metodo lettura titolo
+    public function get_title(){
+        return $this->title;
     }
 
 }
